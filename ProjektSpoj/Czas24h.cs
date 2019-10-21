@@ -2,7 +2,7 @@ using System;
 
 public class Program
 {
-    public static void Main()
+    public static void Main2()
     {
         string[] napis = null;
         Czas24h t = null;
