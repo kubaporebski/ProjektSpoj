@@ -63,22 +63,19 @@ public class Czas24h
     public int Sekunda
     {
         get => liczbaSekund - Godzina * 60 * 60 - Minuta * 60;
-        set => liczbaSekund = value;
-        // uzupełnij kod - zdefiniuj setters'a
+        set => liczbaSekund = (value < 0 || value >= 60) ? throw new ArgumentException() : value + Godzina * 60 * 60 + Minuta * 60;
     }
 
     public int Minuta
     {
         get => (liczbaSekund / 60) % 60;
-        set => liczbaSekund = value; // TOOD
-        // uzupełnij kod - zdefiniuj setters'a
+        set => liczbaSekund = (value < 0 || value >= 60) ? throw new ArgumentException() : value * 60 + Godzina * 60 * 60 + Sekunda;
     }
 
     public int Godzina
     {
         get => liczbaSekund / 3600;
-        set => liczbaSekund = value * 3600;
-        // uzupełnij kod - zdefiniuj setters'a
+        set => liczbaSekund = (value < 0 || value >= 24) ? throw new ArgumentException() : (value * 3600) + Minuta * 60 + Sekunda;
     }
 
     public Czas24h(int godzina, int minuta, int sekunda)

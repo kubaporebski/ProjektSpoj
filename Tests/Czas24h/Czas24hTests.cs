@@ -35,6 +35,8 @@ namespace ProjektSpoj.Tests
             Assert.AreEqual(23, czas.Godzina);
             Assert.AreEqual(49, czas.Minuta);
             Assert.AreEqual(32, czas.Sekunda);
+
+            Assert.ThrowsException<ArgumentException>(() => czas.Godzina = 25);
         }
 
         [TestMethod]
@@ -45,11 +47,12 @@ namespace ProjektSpoj.Tests
             Assert.AreEqual(0, czas.Minuta);
             Assert.AreEqual(56, czas.Sekunda);
             
-
             czas.Minuta = 45;
             Assert.AreEqual(17, czas.Godzina);
             Assert.AreEqual(45, czas.Minuta);
             Assert.AreEqual(56, czas.Sekunda);
+
+            Assert.ThrowsException<ArgumentException>(() => czas.Minuta = 61);
         }
 
         [TestMethod]
@@ -64,6 +67,8 @@ namespace ProjektSpoj.Tests
             Assert.AreEqual(16, czas.Godzina);
             Assert.AreEqual(21, czas.Minuta);
             Assert.AreEqual(33, czas.Sekunda);
+
+            Assert.ThrowsException<ArgumentException>(() => czas.Sekunda = 61);
         }
 
         [TestMethod]
