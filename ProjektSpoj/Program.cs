@@ -10,13 +10,29 @@ namespace ProjektSpoj
     {
         static void Main(string[] args)
         {
-            /*
-            var ft3 = new FreqText(Console.ReadLine().Trim());
-            Console.WriteLine(ft3.PrintAlphabetically);
-            Console.WriteLine();
-            Console.WriteLine(ft3.PrintSorted);
-            Console.WriteLine();
-            */
+            var str = "";
+            var ds = new DistinctStudents();
+            while ((str = Console.ReadLine().Trim()) != "")
+            {
+                ds.Add(str);
+            }
+
+            Console.WriteLine(ds.Count);
+            Console.WriteLine(ds.Print);
+
+        }
+
+        class DistinctStudents : HashSet<string>
+        {
+            public string Print
+            {
+                get
+                {
+                    var i = 0;
+                    return string.Join(Environment.NewLine, this.OrderBy(s => s).Select(s => $"{++i}. {s}"));
+                }
+            }
+
         }
     }
 }
